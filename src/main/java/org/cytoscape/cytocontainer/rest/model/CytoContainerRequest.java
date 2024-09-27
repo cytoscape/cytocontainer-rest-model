@@ -14,7 +14,7 @@ public class CytoContainerRequest {
     
     private String algorithm;
     private JsonNode data;
-    private Map<String, String> customParameters;
+    private Map<String, String> _parameters;
 
     /**
      * Gets the name of the algorithm to use with this request
@@ -51,12 +51,12 @@ public class CytoContainerRequest {
         this.data = data;
     }
     
-    @Schema(description="Optional custom parameters in simple map format arg: value")
-    public Map<String, String> getCustomParameters() {
-        return customParameters;
+    @Schema(description="Optional parameters in simple map format arg: value")
+    public Map<String, String> getParameters() {
+        return _parameters;
     }
 
-    public void setCustomParameters(Map<String, String> customParameters) {
-        this.customParameters = customParameters;
+    public void setParameters(Map<String, String> parameters) {
+        _parameters = parameters;
     }
 }

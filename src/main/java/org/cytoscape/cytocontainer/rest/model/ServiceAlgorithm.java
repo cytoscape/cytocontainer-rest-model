@@ -85,7 +85,7 @@ public class ServiceAlgorithm {
     }
     
     @JsonIgnore
-    public Map<String, Parameter> getCustomParameterMap(){
+    public Map<String, Parameter> getParameterMap(){
         return this._parameters;
     }
 

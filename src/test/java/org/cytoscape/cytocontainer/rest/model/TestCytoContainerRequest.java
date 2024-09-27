@@ -1,6 +1,5 @@
 package org.cytoscape.cytocontainer.rest.model;
 
-import org.cytoscape.cytocontainer.rest.model.CytoContainerRequest;
 import com.fasterxml.jackson.databind.node.TextNode;
 import java.util.HashMap;
 import org.junit.jupiter.api.Test;
@@ -18,9 +17,9 @@ public class TestCytoContainerRequest {
         eq.setData(new TextNode("hi"));
         HashMap<String, String> cParams = new HashMap<>();
         cParams.put("hi", "bye");
-        eq.setCustomParameters(cParams);
+        eq.setParameters(cParams);
         assertEquals("algo", eq.getAlgorithm());
         assertEquals("hi", eq.getData().asText());
-        assertEquals("bye", eq.getCustomParameters().get("hi"));
+        assertEquals("bye", eq.getParameters().get("hi"));
     }
 }
