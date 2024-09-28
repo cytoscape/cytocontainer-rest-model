@@ -2,13 +2,14 @@ package org.cytoscape.cytocontainer.rest.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.List;
 
 /**
  *
  * @author churas
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Parameter {
+public class AlgorithmParameter extends CytoContainerParameter {
     
     public static final String VALUE_TYPE = "value";
     public static final String FLAG_TYPE = "flag";
@@ -17,25 +18,17 @@ public class Parameter {
     public static final String DIGITS_VALIDATION = "digits";
     public static final String STRING_VALIDATION = "string";
     
-    private String name;
     private String displayName;
     private String description;
     private String type;
+	private List<String> valueList;
     private String defaultValue;
     private String validationType;
     private String validationHelp;
     private String validationRegex;
     private Number minValue;
     private Number maxValue;
-    
-    @Schema(description="Name of parameter")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+   
 
     @Schema(description="Parameter description")
     public String getDescription() {
@@ -47,8 +40,8 @@ public class Parameter {
     }
 
     @Schema(description="Type of parameter",
-            allowableValues={Parameter.VALUE_TYPE,
-                             Parameter.FLAG_TYPE})
+            allowableValues={AlgorithmParameter.VALUE_TYPE,
+                             AlgorithmParameter.FLAG_TYPE})
     public String getType() {
         return type;
     }
@@ -67,6 +60,14 @@ public class Parameter {
         this.defaultValue = defaultValue;
     }
 
+	public List<String> getValueList() {
+		return valueList;
+	}
+
+	public void setValueList(List<String> valueList) {
+		this.valueList = valueList;
+	}
+
     @Schema(description="Display name for parameter")
     public String getDisplayName() {
         return displayName;
@@ -84,9 +85,9 @@ public class Parameter {
 
     */
     @Schema(description="Type of validation to perform",
-            allowableValues={Parameter.NUMBER_VALIDATION,
-                Parameter.DIGITS_VALIDATION,
-                Parameter.STRING_VALIDATION})
+            allowableValues={AlgorithmParameter.NUMBER_VALIDATION,
+                AlgorithmParameter.DIGITS_VALIDATION,
+                AlgorithmParameter.STRING_VALIDATION})
     public String getValidationType() {
         return validationType;
     }
@@ -115,8 +116,8 @@ public class Parameter {
     }
 
     @Schema(description="If set and parameter is of type '" +
-            Parameter.NUMBER_VALIDATION + "' or '" +
-            Parameter.DIGITS_VALIDATION + "', "
+            AlgorithmParameter.NUMBER_VALIDATION + "' or '" +
+            AlgorithmParameter.DIGITS_VALIDATION + "', "
             + " values below this should NOT be allowed")
     public Number getMinValue() {
         return minValue;
@@ -127,8 +128,8 @@ public class Parameter {
     }
 
     @Schema(description="If set and parameter is of type '" +
-            Parameter.NUMBER_VALIDATION + "' or '" +
-            Parameter.DIGITS_VALIDATION + "', "
+            AlgorithmParameter.NUMBER_VALIDATION + "' or '" +
+            AlgorithmParameter.DIGITS_VALIDATION + "', "
             + " values above this should NOT be allowed")
     public Number getMaxValue() {
         return maxValue;

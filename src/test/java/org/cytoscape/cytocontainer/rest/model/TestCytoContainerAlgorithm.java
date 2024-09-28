@@ -19,9 +19,9 @@ public class TestCytoContainerAlgorithm {
         assertEquals(null, cda.getDockerImage());
 
         assertEquals(null, cda.getVersion());
-        HashSet<Parameter> cParams = new HashSet<>();
-        Parameter cp = new Parameter();
-        cp.setName("x");
+        HashSet<AlgorithmParameter> cParams = new HashSet<>();
+        AlgorithmParameter cp = new AlgorithmParameter();
+        cp.setFlag("x");
         cParams.add(cp);
         cda.setParameters(cParams);
         cda.setDescription("desc");
@@ -29,7 +29,7 @@ public class TestCytoContainerAlgorithm {
         cda.setDockerImage("docker");
         
         cda.setVersion("version");
-        assertEquals("x", cda.getParameters().iterator().next().getName());
+        assertEquals("x", cda.getParameters().iterator().next().getFlag());
         assertEquals("desc", cda.getDescription());
         assertEquals("name", cda.getName());
         
