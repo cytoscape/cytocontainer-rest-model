@@ -16,22 +16,22 @@ import org.cytoscape.cytocontainer.rest.model.exceptions.CytoContainerException;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Algorithm {
 	
-	public static final String ADD_NETWORKS_ACTION = "AddNetworks";
-	public static final String ADD_TABLES_ACTION = "AddTables";
-	public static final String UPDATE_NETWORK_ACTION = "UpdateNetwork";
-	public static final String UPDATE_TABLES_ACTION = "UpdateTables";
-	public static final String UPDATE_LAYOUTS_ACTION = "UpdateLayouts";
-	public static final String UPDATE_SELECTION_ACTION = "UpdateSelection";
+	public static final String ADD_NETWORKS_ACTION = "addNetworks";
+	public static final String ADD_TABLES_ACTION = "addTables";
+	public static final String UPDATE_NETWORK_ACTION = "updateNetwork";
+	public static final String UPDATE_TABLES_ACTION = "updateTables";
+	public static final String UPDATE_LAYOUTS_ACTION = "updateLayouts";
+	public static final String UPDATE_SELECTION_ACTION = "updateSelection";
 	public static final Set<String> ACTION_SET = Set.of(ADD_NETWORKS_ACTION, ADD_TABLES_ACTION,
 			UPDATE_NETWORK_ACTION, UPDATE_TABLES_ACTION, UPDATE_LAYOUTS_ACTION, UPDATE_SELECTION_ACTION);
     private String _name;
     private String _description;
     private String _version;
-	private String _rootMenu;
-	private String _action;
+	private String _cyWebAction;
 	private SelectedData _selectedData;
-	
-    private HashMap<String, AlgorithmParameter> _parameters;
+	private CyWebMenuItem _cyWebMenuItem;
+
+	private HashMap<String, AlgorithmParameter> _parameters;
 	
 	public Algorithm(){
 		
@@ -44,8 +44,7 @@ public class Algorithm {
 		_name = algorithm.getName();
 		_description = algorithm.getDescription();
 		_version = algorithm.getVersion();
-		_rootMenu = algorithm.getRootMenu();
-		_action = algorithm.getAction();
+		_cyWebAction = algorithm.getCyWebAction();
 		if (algorithm.getParameterMap() != null){
 			for (String key : algorithm.getParameterMap().keySet()){
 				addParameter(algorithm.getParameterMap().get(key));
@@ -54,6 +53,16 @@ public class Algorithm {
 		if (algorithm.getSelectedData() != null){
 			_selectedData = new SelectedData(algorithm.getSelectedData());
 		}
+	}
+	
+	@Schema(description="Desired name and location of this service side app in Cytoscape on the Web Menu system. For more information see: "
+							+ " https://github.com/cytoscape-web\n")
+    public CyWebMenuItem getCyWebMenuItem() {
+		return _cyWebMenuItem;
+	}
+
+	public void setCyWebMenuItem(CyWebMenuItem _cyWebMenuItem) {
+		this._cyWebMenuItem = _cyWebMenuItem;
 	}
     
     @Schema(description="Name of algorithm")
@@ -82,28 +91,18 @@ public class Algorithm {
     public void setVersion(String version) {
         this._version = version;
     }
-	
-	@Schema(description="Desired name and location of this service side app in Cytoscape on the Web Menu system. For more information see: "
-            + " https://github.com/cytoscape-web\n")
-	public String getRootMenu() {
-		return _rootMenu;
-	}
-
-	public void setRootMenu(String _rootMenu) {
-		this._rootMenu = _rootMenu;
-	}
 
 	@Schema(description="Optional action to be performed with result. Can be one of the following: (AddNetworks, UpdateNetwork, AddTables, UpdateTables, UpdateLayouts) See: "
             + " https://github.com/cytoscape-web\n")
-	public String getAction() {
-		return _action;
+	public String getCyWebAction() {
+		return _cyWebAction;
 	}
 
-	public void setAction(String action) throws CytoContainerException {
-		if (action != null && !ACTION_SET.contains(action)){
-			throw new CytoContainerException(action + " is not a valid action");
+	public void setCyWebAction(String cyWebAction) throws CytoContainerException {
+		if (cyWebAction != null && !ACTION_SET.contains(cyWebAction)){
+			throw new CytoContainerException(cyWebAction + " is not a valid action");
 		}
-		this._action = action;
+		this._cyWebAction = cyWebAction;
 	}
 
 	@Schema(description="Defines data this algorithm expects to receive")
