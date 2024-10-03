@@ -1,8 +1,13 @@
 package org.cytoscape.cytocontainer.rest.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 
 /**
@@ -34,4 +39,6 @@ public class CytoContainerAlgorithm extends Algorithm {
 	public void setHiddenParameters(List<String> hiddenParameters) {
 		this.hiddenParameters = hiddenParameters;
 	}
+	
+	
 }

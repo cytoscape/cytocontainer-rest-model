@@ -30,9 +30,8 @@ public class Algorithm {
 	private String _cyWebAction;
 	private ServiceInputDefinition _serviceInputDefinition;
 	private CyWebMenuItem _cyWebMenuItem;
-
 	private HashMap<String, AlgorithmParameter> _parameters;
-	
+
 	public Algorithm(){
 		
 	}
@@ -49,7 +48,7 @@ public class Algorithm {
 		
 		if (algorithm.getParameterMap() != null){
 			for (String key : algorithm.getParameterMap().keySet()){
-				addParameter(algorithm.getParameterMap().get(key));
+				addParameter(new AlgorithmParameter(algorithm.getParameterMap().get(key)));
 			}
 		}
 		if (algorithm.getServiceInputDefinition() != null){
@@ -161,6 +160,5 @@ public class Algorithm {
     public Map<String, AlgorithmParameter> getParameterMap(){
         return this._parameters;
     }
-
     
 }

@@ -2,6 +2,7 @@ package org.cytoscape.cytocontainer.rest.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,7 +36,29 @@ public class AlgorithmParameter {
     private Number minValue;
     private Number maxValue;
    
-
+	public AlgorithmParameter(){
+		
+	}
+	public AlgorithmParameter(AlgorithmParameter src){
+		if (src == null){
+			return;
+		}
+		displayName = src.getDisplayName();
+		description = src.getDescription();
+		type = src.getType();
+		if (src.getValueList() != null){
+			valueList = new ArrayList<>();
+			for (String value : src.getValueList()){
+				valueList.add(value);
+			}
+		}
+		defaultValue = src.getDefaultValue();
+		validationType = src.getValidationType();
+		validationHelp = src.getValidationHelp();
+		validationRegex = src.getValidationRegex();
+		minValue = src.getMaxValue();
+		maxValue = src.getMaxValue();
+	}
     @Schema(description="Parameter description")
     public String getDescription() {
         return description;
