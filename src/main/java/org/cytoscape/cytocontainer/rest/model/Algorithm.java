@@ -28,7 +28,7 @@ public class Algorithm {
     private String _description;
     private String _version;
 	private String _cyWebAction;
-	private SelectedData _selectedData;
+	private ServiceInputDefinition _serviceInputDefinition;
 	private CyWebMenuItem _cyWebMenuItem;
 
 	private HashMap<String, AlgorithmParameter> _parameters;
@@ -37,7 +37,7 @@ public class Algorithm {
 		
 	}
 	
-	public Algorithm(CytoContainerAlgorithm algorithm){
+	public Algorithm(Algorithm algorithm){
 		if (algorithm == null){
 			return;
 		}
@@ -45,13 +45,15 @@ public class Algorithm {
 		_description = algorithm.getDescription();
 		_version = algorithm.getVersion();
 		_cyWebAction = algorithm.getCyWebAction();
+		_cyWebMenuItem = algorithm.getCyWebMenuItem();
+		
 		if (algorithm.getParameterMap() != null){
 			for (String key : algorithm.getParameterMap().keySet()){
 				addParameter(algorithm.getParameterMap().get(key));
 			}
 		}
-		if (algorithm.getSelectedData() != null){
-			_selectedData = new SelectedData(algorithm.getSelectedData());
+		if (algorithm.getServiceInputDefinition() != null){
+			_serviceInputDefinition = new ServiceInputDefinition(algorithm.getServiceInputDefinition());
 		}
 	}
 	
@@ -106,12 +108,12 @@ public class Algorithm {
 	}
 
 	@Schema(description="Defines data this algorithm expects to receive")
-	public SelectedData getSelectedData() {
-		return _selectedData;
+	public ServiceInputDefinition getServiceInputDefinition() {
+		return _serviceInputDefinition;
 	}
 
-	public void setSelectedData(SelectedData _selectedData) {
-		this._selectedData = _selectedData;
+	public void setServiceInputDefinition(ServiceInputDefinition serviceInputDefinition) {
+		this._serviceInputDefinition = serviceInputDefinition;
 	}
 
 	
@@ -134,10 +136,10 @@ public class Algorithm {
             this._parameters.clear();
         }
         for (AlgorithmParameter cp : parameters){
-            if (cp.getFlag()== null){
+            if (cp.getDisplayName()== null){
                 continue;
             }
-            this._parameters.put(cp.getFlag(), cp);
+            this._parameters.put(cp.getDisplayName(), cp);
         }
     }
 	
@@ -145,14 +147,14 @@ public class Algorithm {
 		if (param == null){
 			return;
 		}
-		if (param.getFlag() == null){
+		if (param.getDisplayName()== null){
 			return;
 		}
 
 		if (_parameters == null){
 			_parameters = new HashMap<>();
 		}
-		_parameters.put(param.getFlag(), param);
+		_parameters.put(param.getDisplayName(), param);
 	}
     
     @JsonIgnore

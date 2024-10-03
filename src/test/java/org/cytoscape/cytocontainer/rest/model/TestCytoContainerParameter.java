@@ -19,7 +19,6 @@ public class TestCytoContainerParameter {
         assertEquals(null, cp.getDisplayName());
         assertEquals(null, cp.getMaxValue());
         assertEquals(null, cp.getMinValue());
-        assertEquals(null, cp.getFlag());
         assertEquals(null, cp.getType());
         assertEquals(null, cp.getValidationHelp());
         assertEquals(null, cp.getValidationRegex());
@@ -30,7 +29,6 @@ public class TestCytoContainerParameter {
         cp.setDisplayName("displayname");
         cp.setMaxValue(10);
         cp.setMinValue(2);
-        cp.setFlag("name");
         cp.setType("type");
         cp.setValidationHelp("help");
         cp.setValidationRegex("regex");
@@ -41,7 +39,6 @@ public class TestCytoContainerParameter {
         assertEquals("displayname", cp.getDisplayName());
         assertEquals(10, cp.getMaxValue());
         assertEquals(2, cp.getMinValue());
-        assertEquals("name", cp.getFlag());
         assertEquals("type", cp.getType());
         assertEquals("help", cp.getValidationHelp());
         assertEquals("regex", cp.getValidationRegex());

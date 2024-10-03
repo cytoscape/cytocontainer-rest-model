@@ -9,10 +9,16 @@ import java.util.List;
  * @author churas
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class AlgorithmParameter extends CytoContainerParameter {
+public class AlgorithmParameter {
     
-    public static final String VALUE_TYPE = "value";
-    public static final String FLAG_TYPE = "flag";
+	public static final String TEXT_TYPE = "text";
+	public static final String DROPDOWN_TYPE = "dropDown";
+	public static final String RADIO_TYPE = "radio";
+	public static final String CHECKBOX_TYPE = "checkBox";
+	public static final String NODECOLUMN_TYPE = "nodeColumn";
+	public static final String EDGECOLUMN_TYPE = "edgeColumn";
+	
+    public static final String FLAG_TYPE = "checkBox";
     
     public static final String NUMBER_VALIDATION = "number";
     public static final String DIGITS_VALIDATION = "digits";
@@ -40,8 +46,12 @@ public class AlgorithmParameter extends CytoContainerParameter {
     }
 
     @Schema(description="Type of parameter",
-            allowableValues={AlgorithmParameter.VALUE_TYPE,
-                             AlgorithmParameter.FLAG_TYPE})
+            allowableValues={AlgorithmParameter.TEXT_TYPE,
+                             AlgorithmParameter.DROPDOWN_TYPE,
+			                 AlgorithmParameter.RADIO_TYPE,
+			                 AlgorithmParameter.CHECKBOX_TYPE,
+			                 AlgorithmParameter.NODECOLUMN_TYPE,
+			                 AlgorithmParameter.EDGECOLUMN_TYPE})
     public String getType() {
         return type;
     }

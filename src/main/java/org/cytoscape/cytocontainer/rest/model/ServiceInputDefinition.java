@@ -1,5 +1,6 @@
 package org.cytoscape.cytocontainer.rest.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -9,7 +10,7 @@ import org.cytoscape.cytocontainer.rest.model.exceptions.CytoContainerException;
  * Defines structure of data that should be fed to ServiceAlgorithm
  * @author churas
  */
-public class SelectedData {
+public class ServiceInputDefinition {
 	
 	public static final String NODES_TYPE = "nodes";
 	public static final String EDGES_TYPE = "edges";
@@ -22,26 +23,28 @@ public class SelectedData {
 	
 	private String _type;
 	private String _scope;
-	private List<SelectedDataParameter> _parameters;
+	private List<InputColumn> _inputColumns;
+	private InputNetwork _inputNetwork;
 	
-	public SelectedData(){
+	public ServiceInputDefinition(){
 		_scope = SELECTED_SCOPE;
 	}
 	
-	public SelectedData(SelectedData sData){
+	public ServiceInputDefinition(ServiceInputDefinition sData){
 		if (sData == null){
 			return;
 		}
 		_type = sData.getType();
 		_scope = sData.getScope();
-		if (sData.getParameters() == null){
-			return;
+		if (sData.getInputNetwork() != null){
+			_inputNetwork = new InputNetwork(sData.getInputNetwork());
 		}
-		_parameters = new ArrayList<>();
-		for(SelectedDataParameter sdp : sData.getParameters()){
-			_parameters.add(sdp.copy());
+		if (sData.getInputColumns() != null){
+			_inputColumns = new ArrayList<>();
+			for (InputColumn ic : sData.getInputColumns()){
+				_inputColumns.add(new InputColumn(ic));
+			}
 		}
-	
 	}
 
 	public String getType() {
@@ -66,11 +69,25 @@ public class SelectedData {
 		this._scope = scope;
 	}
 
-	public List<SelectedDataParameter> getParameters() {
-		return _parameters;
+	@Schema(description="List of columns that need to be created. For type of '" + ServiceInputDefinition.NODES_TYPE + "' and '" + ServiceInputDefinition.EDGES_TYPE + "' only.")
+	public List<InputColumn> getInputColumns() {
+		return _inputColumns;
 	}
 
-	public void setParameters(List<SelectedDataParameter> parameters) {
-		_parameters = parameters;
+	public void setInputColumns(List<InputColumn> inputColumns) {
+		this._inputColumns = inputColumns;
 	}
+
+	@Schema(description="Defines structure of data requested by service. For type of '" + ServiceInputDefinition.NETWORK_TYPE + "' only.")
+	public InputNetwork getInputNetwork() {
+		return _inputNetwork;
+	}
+
+	public void setInputNetwork(InputNetwork inputNetwork) {
+		this._inputNetwork = inputNetwork;
+	}
+	
+	
+	
+	
 }

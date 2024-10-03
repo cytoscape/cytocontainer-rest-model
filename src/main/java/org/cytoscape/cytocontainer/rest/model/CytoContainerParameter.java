@@ -4,7 +4,7 @@ package org.cytoscape.cytocontainer.rest.model;
  *
  * @author churas
  */
-public class CytoContainerParameter {
+public class CytoContainerParameter extends AlgorithmParameter {
 	
 	private String _flag;
 
