@@ -83,7 +83,7 @@ public class AlgorithmParameter {
         this.type = type;
     }
 
-    @Schema(description="Default value for parameter, for ")
+    @Schema(description="Default value for parameter")
     public String getDefaultValue() {
         return defaultValue;
     }
@@ -93,6 +93,7 @@ public class AlgorithmParameter {
         this.defaultValue = defaultValue;
     }
 
+	@Schema(description="Values to put into '" + AlgorithmParameter.DROPDOWN_TYPE + "' type field")
 	public List<String> getValueList() {
 		return valueList;
 	}

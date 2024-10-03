@@ -30,7 +30,7 @@ public class Algorithm {
 	private String _cyWebAction;
 	private ServiceInputDefinition _serviceInputDefinition;
 	private CyWebMenuItem _cyWebMenuItem;
-	private HashMap<String, AlgorithmParameter> _parameters;
+	protected HashMap<String, AlgorithmParameter> _parameters;
 
 	public Algorithm(){
 		
