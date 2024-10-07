@@ -4,7 +4,7 @@ package org.cytoscape.cytocontainer.rest.model;
  *
  * @author churas
  */
-public class JobStatus {
+public class RequestStatus {
     
     public static final String SUBMITTED_STATUS = "submitted";
     public static final String PROCESSING_STATUS = "processing";

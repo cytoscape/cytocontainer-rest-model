@@ -11,6 +11,7 @@ import java.util.Map;
  *
  * @author churas
  */
+@Schema(description="Wraps Algorithm with additional information needed to run")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CytoContainerAlgorithm extends Algorithm {
     

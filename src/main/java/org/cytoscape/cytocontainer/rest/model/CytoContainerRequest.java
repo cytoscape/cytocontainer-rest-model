@@ -6,7 +6,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Map;
 
 /**
- * Represents an Community Detection Request
+ * Represents an Cytoscape Container REST Service Request
  * @author churas
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -20,7 +20,7 @@ public class CytoContainerRequest {
      * Gets the name of the algorithm to use with this request
      * @return 
      */
-    @Schema(description="Name of algorithm to run", example="louvain")
+    @Schema(description="Name of algorithm to run", example="updatetablesexample")
     public String getAlgorithm() {
         return algorithm;
     }

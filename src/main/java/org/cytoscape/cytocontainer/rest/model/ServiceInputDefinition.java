@@ -7,7 +7,9 @@ import java.util.Set;
 import org.cytoscape.cytocontainer.rest.model.exceptions.CytoContainerException;
 
 /**
- * Defines structure of data that should be fed to ServiceAlgorithm
+ * Defines structure of data that should be fed to service.
+ * Either inputNetwork OR inputColumns should be defined in this, not both
+ * 
  * @author churas
  */
 public class ServiceInputDefinition {

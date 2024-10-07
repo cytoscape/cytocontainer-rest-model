@@ -2,11 +2,16 @@ package org.cytoscape.cytocontainer.rest.model;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
+/**
+ * 
+ * @author churas
+ */
+@Schema(description="Menu or submenu item")
 public class CyWebMenuItemPath {
 	private String _name;
 	private int _gravity;
 	
-	@Schema(description="Menu name")
+	@Schema(description="Menu name", example="My App")
 	public String getName() {
 		return _name;
 	}
@@ -14,7 +19,7 @@ public class CyWebMenuItemPath {
 		this._name = _name;
 	}
 	
-	@Schema(description="Sets menu gravity, higher values mean lower on menu")
+	@Schema(description="Sets menu gravity, higher values mean lower on menu", example="10")
 	public int getGravity() {
 		return _gravity;
 	}

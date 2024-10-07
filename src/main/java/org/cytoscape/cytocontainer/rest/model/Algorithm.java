@@ -10,7 +10,8 @@ import java.util.Set;
 import org.cytoscape.cytocontainer.rest.model.exceptions.CytoContainerException;
 
 /**
- *
+ * Algorithm that performs some operation for a service
+ * 
  * @author churas
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -93,8 +94,14 @@ public class Algorithm {
         this._version = version;
     }
 
-	@Schema(description="Optional action to be performed with result. Can be one of the following: (AddNetworks, UpdateNetwork, AddTables, UpdateTables, UpdateLayouts) See: "
-            + " https://github.com/cytoscape-web\n")
+	@Schema(description="Action to be performed with result by caller. Should be set to one of the following Enums listed: For more information see: "
+            + " https://github.com/cytoscape-web\n",
+			allowableValues = {Algorithm.ADD_NETWORKS_ACTION,
+			                   Algorithm.ADD_TABLES_ACTION,
+			                   Algorithm.UPDATE_LAYOUTS_ACTION,
+			                   Algorithm.UPDATE_NETWORK_ACTION,
+			                   Algorithm.UPDATE_SELECTION_ACTION,
+			                   Algorithm.UPDATE_TABLES_ACTION})
 	public String getCyWebAction() {
 		return _cyWebAction;
 	}
@@ -142,6 +149,7 @@ public class Algorithm {
         }
     }
 	
+	@JsonIgnore
 	private void addParameter(AlgorithmParameter param){
 		if (param == null){
 			return;

@@ -4,11 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
- *
+ * Status of algorithm invocation
  * @author churas
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CytoContainerResultStatus extends JobStatus {
+public class CytoContainerResultStatus extends RequestStatus {
     
     private String id;
     private String status;
@@ -22,7 +22,7 @@ public class CytoContainerResultStatus extends JobStatus {
     }
     
     /**
-     * Creates new {@link #CommunityDetectionRequestStatus} object setting {@link #getStartTime() }
+     * Creates new {@link #CytoContainerRequestStatus} object setting {@link #getStartTime() }
      * to {@code startTime} passed into this method.
      * @param startTime Current time in milliseconds, usually set with value from {@link java.lang.System.currentTimeMillis()}
      */
@@ -63,7 +63,7 @@ public class CytoContainerResultStatus extends JobStatus {
         return this;
     }
 
-    @Schema(description="Id of Community Detection Request", example="261fb9b7-75af-4f1a-9caa-e57a4b5fc349")
+    @Schema(description="Id of Cytoscape Container REST Service Request", example="261fb9b7-75af-4f1a-9caa-e57a4b5fc349")
     public String getId() {
         return id;
     }

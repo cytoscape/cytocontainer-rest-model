@@ -3,11 +3,17 @@ package org.cytoscape.cytocontainer.rest.model;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.List;
 
+/**
+ * Defines menu for service
+ * 
+ * @author churas
+ */
+@Schema(description="Defines menu for service")
 public class CyWebMenuItem {
 	private String _root;
 	private List<CyWebMenuItemPath> _path;
 	
-	@Schema(description="Top level menu to place this service")
+	@Schema(description="Top level menu to place this service", example="Apps")
 	public String getRoot() {
 		return _root;
 	}

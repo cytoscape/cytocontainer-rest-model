@@ -9,6 +9,7 @@ import java.util.List;
  *
  * @author churas
  */
+@Schema(description="Parameter that can be passed to Algorithm")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AlgorithmParameter {
     

@@ -6,7 +6,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 
 /**
- *
+ * Contains result of invocation of algorithm
  * @author churas
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -25,7 +25,7 @@ public class CytoContainerResult extends CytoContainerResultStatus {
         return this;
     }
 
-    @Schema(description="Result in json fragment")
+    @Schema(description="Result of service in json fragment. The format should adhere to output denoted in serviceInputDefinition for service")
     public JsonNode getResult() {
         return result;
     }

@@ -1,7 +1,7 @@
 package org.cytoscape.cytocontainer.rest.model;
 
 
-import org.cytoscape.cytocontainer.rest.model.Task;
+import org.cytoscape.cytocontainer.rest.model.CytoContainerRequestId;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -13,7 +13,7 @@ public class TestTask {
     
     @Test
     public void testGettersAndSetters(){
-        Task t = new Task();
+        CytoContainerRequestId t = new CytoContainerRequestId();
         assertEquals(null, t.getId());
         t.setId("hi");
         assertEquals("hi", t.getId());        

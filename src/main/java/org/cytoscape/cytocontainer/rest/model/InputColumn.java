@@ -3,7 +3,9 @@ package org.cytoscape.cytocontainer.rest.model;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
- *
+ * Defines expected input data to service to be either
+ * nodes or edges columns
+ * 
  * @author churas
  */
 public class InputColumn {
