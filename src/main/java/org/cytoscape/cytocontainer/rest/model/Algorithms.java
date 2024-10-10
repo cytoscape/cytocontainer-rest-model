@@ -1,5 +1,6 @@
 package org.cytoscape.cytocontainer.rest.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.LinkedHashMap;
 
@@ -8,6 +9,7 @@ import java.util.LinkedHashMap;
  * @author churas
  */
 @Schema(description="Contains list of Algorithms offered by all services on this server")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Algorithms {
 	
 	private LinkedHashMap<String, Algorithm> _algorithms;

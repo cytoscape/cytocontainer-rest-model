@@ -1,5 +1,6 @@
 package org.cytoscape.cytocontainer.rest.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import java.util.List;
  * @author churas
  */
 @Schema(description="Defines menu for service")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CyWebMenuItem {
 	private String _root;
 	private List<CyWebMenuItemPath> _path;

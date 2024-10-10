@@ -1,5 +1,6 @@
 package org.cytoscape.cytocontainer.rest.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
@@ -8,6 +9,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * 
  * @author churas
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class InputColumn {
 	private String _name;
 	private String _description;

@@ -1,5 +1,6 @@
 package org.cytoscape.cytocontainer.rest.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
@@ -7,6 +8,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * @author churas
  */
 @Schema(description="Menu or submenu item")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CyWebMenuItemPath {
 	private String _name;
 	private int _gravity;

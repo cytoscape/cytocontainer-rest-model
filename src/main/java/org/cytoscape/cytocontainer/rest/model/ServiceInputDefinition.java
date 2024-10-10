@@ -1,5 +1,6 @@
 package org.cytoscape.cytocontainer.rest.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,7 @@ import org.cytoscape.cytocontainer.rest.model.exceptions.CytoContainerException;
  * 
  * @author churas
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ServiceInputDefinition {
 	
 	public static final String NODES_TYPE = "nodes";
@@ -21,7 +23,8 @@ public class ServiceInputDefinition {
 
 	public static final String SELECTED_SCOPE = "selected";
 	public static final String ALL_SCOPE = "all";
-	public static final Set<String> SCOPE_SET = Set.of(SELECTED_SCOPE, ALL_SCOPE);
+	public static final String DYNAMIC_SCOPE = "dynamic";
+	public static final Set<String> SCOPE_SET = Set.of(SELECTED_SCOPE, ALL_SCOPE, DYNAMIC_SCOPE);
 	
 	private String _type;
 	private String _scope;

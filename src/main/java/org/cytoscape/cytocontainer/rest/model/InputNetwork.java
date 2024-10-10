@@ -1,11 +1,13 @@
 package org.cytoscape.cytocontainer.rest.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * Defines expected input for this service to be a network
  * @author churas
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class InputNetwork {
 	public static final String NETWORK_MODEL = "network";
 	public static final String GRAPH_MODEL = "graph";

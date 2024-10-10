@@ -1,9 +1,12 @@
 package org.cytoscape.cytocontainer.rest.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  *
  * @author churas
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CytoContainerParameter extends AlgorithmParameter {
 	
 	private String _flag;
