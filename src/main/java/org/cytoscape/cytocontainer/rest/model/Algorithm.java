@@ -29,6 +29,8 @@ public class Algorithm {
     private String _description;
     private String _version;
 	private String _cyWebAction;
+	private String _author;
+	private String _citation;
 	private ServiceInputDefinition _serviceInputDefinition;
 	private CyWebMenuItem _cyWebMenuItem;
 	protected HashMap<String, AlgorithmParameter> _parameters;
@@ -46,6 +48,8 @@ public class Algorithm {
 		_version = algorithm.getVersion();
 		_cyWebAction = algorithm.getCyWebAction();
 		_cyWebMenuItem = algorithm.getCyWebMenuItem();
+		_author = algorithm.getAuthor();
+		_citation = algorithm.getCitation();
 		
 		if (algorithm.getParameterMap() != null){
 			for (String key : algorithm.getParameterMap().keySet()){
@@ -93,6 +97,26 @@ public class Algorithm {
     public void setVersion(String version) {
         this._version = version;
     }
+
+	@Schema(description="Author(s) of this service")
+	public String getAuthor() {
+		return _author;
+	}
+
+	public void setAuthor(String author) {
+		this._author = author;
+	}
+
+	@Schema(description="Citation for this service")
+	public String getCitation() {
+		return _citation;
+	}
+
+	public void setCitation(String citation) {
+		this._citation = citation;
+	}
+	
+	
 
 	@Schema(description="Action to be performed with result by caller. Should be set to one of the following Enums listed: For more information see: "
             + " https://github.com/cytoscape-web\n",
