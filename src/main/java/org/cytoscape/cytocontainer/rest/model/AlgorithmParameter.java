@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import org.cytoscape.cytocontainer.rest.model.exceptions.CytoContainerException;
 
 /**
  *
@@ -19,12 +21,16 @@ public class AlgorithmParameter {
 	public static final String CHECKBOX_TYPE = "checkBox";
 	public static final String NODECOLUMN_TYPE = "nodeColumn";
 	public static final String EDGECOLUMN_TYPE = "edgeColumn";
+    public static final String FLAG_TYPE = "flag";
 	
-    public static final String FLAG_TYPE = "checkBox";
+	public static final Set<String> TYPE_SET = Set.of(TEXT_TYPE, DROPDOWN_TYPE, RADIO_TYPE, CHECKBOX_TYPE,
+			NODECOLUMN_TYPE, EDGECOLUMN_TYPE);
     
     public static final String NUMBER_VALIDATION = "number";
     public static final String DIGITS_VALIDATION = "digits";
     public static final String STRING_VALIDATION = "string";
+	
+	public static final Set<String> VALIDATION_SET = Set.of(NUMBER_VALIDATION, DIGITS_VALIDATION, STRING_VALIDATION);
     
     private String displayName;
     private String description;
@@ -75,12 +81,16 @@ public class AlgorithmParameter {
 			                 AlgorithmParameter.RADIO_TYPE,
 			                 AlgorithmParameter.CHECKBOX_TYPE,
 			                 AlgorithmParameter.NODECOLUMN_TYPE,
-			                 AlgorithmParameter.EDGECOLUMN_TYPE})
+			                 AlgorithmParameter.EDGECOLUMN_TYPE,
+			                 AlgorithmParameter.FLAG_TYPE})
     public String getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(String type) throws CytoContainerException {
+		if (type != null && !TYPE_SET.contains(type)){
+			throw new CytoContainerException(type + " is not a valid type");
+		}
         this.type = type;
     }
 
@@ -127,7 +137,10 @@ public class AlgorithmParameter {
         return validationType;
     }
 
-    public void setValidationType(String validationType) {
+    public void setValidationType(String validationType) throws CytoContainerException {
+		if (validationType != null && !VALIDATION_SET.contains(validationType)){
+			throw new CytoContainerException(validationType + " is not a valid validationType");
+		}
         this.validationType = validationType;
     }
 
