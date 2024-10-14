@@ -40,6 +40,7 @@ public class AlgorithmParameter {
     private String validationType;
     private String validationHelp;
     private String validationRegex;
+	private String columnTypeFilter;
     private Number minValue;
     private Number maxValue;
    
@@ -186,4 +187,21 @@ public class AlgorithmParameter {
     public void setMaxValue(Number maxValue) {
         this.maxValue = maxValue;
     }
+
+	@Schema(description="Only used for nodes/edges column type. If defined, Cytoscape Web uses it to filter what node/edge columns to display. If omitted, all columns will be listed",
+			allowableValues = {CXDataType.LIST_OF, CXDataType.NUMBER, CXDataType.WHOLE_NUMBER,CXDataType.LIST_OF_NUMBER, CXDataType.LIST_OF_WHOLE_NUMBER, CXDataType.STRING_TYPE, CXDataType.LONG_TYPE, CXDataType.INTEGER_TYPE, CXDataType.DOUBLE_TYPE, CXDataType.BOOLEAN_TYPE,
+				CXDataType.LIST_OF_STRING_TYPE, CXDataType.LIST_OF_LONG_TYPE, CXDataType.LIST_OF_INTEGER_TYPE, CXDataType.LIST_OF_DOUBLE_TYPE, CXDataType.LIST_OF_BOOLEAN_TYPE
+			})
+	public String getColumnTypeFilter() {
+		return columnTypeFilter;
+	}
+
+	public void setColumnTypeFilter(String columnTypeFilter) throws CytoContainerException {
+		if (columnTypeFilter != null && !CXDataType.COLUMN_FILTER_SET.contains(columnTypeFilter)){
+			throw new CytoContainerException(columnTypeFilter + " is not a valid columnTypeFilter");
+		}
+		this.columnTypeFilter = columnTypeFilter;
+	}
+	
+	
 }
