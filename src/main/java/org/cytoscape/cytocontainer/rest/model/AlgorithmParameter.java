@@ -64,7 +64,8 @@ public class AlgorithmParameter {
 		validationType = src.getValidationType();
 		validationHelp = src.getValidationHelp();
 		validationRegex = src.getValidationRegex();
-		minValue = src.getMaxValue();
+		columnTypeFilter = src.getColumnTypeFilter();
+		minValue = src.getMinValue();
 		maxValue = src.getMaxValue();
 	}
     @Schema(description="Parameter description")
