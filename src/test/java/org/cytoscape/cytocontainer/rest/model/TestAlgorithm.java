@@ -10,17 +10,21 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author churas
  */
-public class TestCytoContainerAlgorithm {
+public class TestAlgorithm {
     
     @Test
-    public void testGettersAndSetters(){
-        CytoContainerAlgorithm cda = new CytoContainerAlgorithm();
+    public void testGettersAndSetters() throws Exception {
+        Algorithm cda = new Algorithm();
         assertEquals(null, cda.getParameters());
         assertEquals(null, cda.getDescription());
         assertEquals(null, cda.getName());
-        assertEquals(null, cda.getDockerImage());
-		assertEquals(null, cda.getHiddenParameters());
-		assertEquals(null, cda.getParameterFlagMap());
+        assertEquals(null, cda.getVersion());
+		assertEquals(null, cda.getCyWebAction());
+		assertEquals(null, cda.getAuthor());
+		assertEquals(null, cda.getCitation());
+		assertEquals(null, cda.getServiceInputDefinition());
+		assertEquals(null, cda.getCyWebMenuItem());
+		
 		
 
         assertEquals(null, cda.getVersion());
@@ -30,23 +34,17 @@ public class TestCytoContainerAlgorithm {
         cda.setParameters(cParams);
         cda.setDescription("desc");
         cda.setName("name");
-        cda.setDockerImage("docker");
-		cda.setHiddenParameters(Arrays.asList("one", "two"));
-        HashMap<String, String> pMap = new HashMap<>();
-		pMap.put("a", "b");
-		cda.setParameterFlagMap(pMap);
+		cda.setVersion("version");
+		cda.setCitation("citation");
+		cda.setAuthor("author");
+		cda.setCyWebAction(Algorithm.ADD_NETWORKS_ACTION);
+		
+       
 		
         cda.setVersion("version");
         assertEquals("desc", cda.getDescription());
         assertEquals("name", cda.getName());
-        
-        assertEquals("docker", cda.getDockerImage());
 
         assertEquals("version", cda.getVersion());
-		assertEquals(cda.getHiddenParameters().size(), 2);
-		assertTrue(cda.getHiddenParameters().contains("one"));
-		assertTrue(cda.getHiddenParameters().contains("two"));
-		assertEquals(cda.getParameterFlagMap().size(), 1);
-		assertEquals(cda.getParameterFlagMap().get("a"), "b");
 	}	
 }
