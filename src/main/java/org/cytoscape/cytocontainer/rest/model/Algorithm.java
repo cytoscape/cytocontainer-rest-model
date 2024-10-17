@@ -33,6 +33,10 @@ public class Algorithm {
 	private List<String> _cyWebActions;
 	private String _author;
 	private String _citation;
+	private String _email;
+	private String _codeRepository;
+	private String _website;
+	private String _tutorial;
 	private ServiceInputDefinition _serviceInputDefinition;
 	private CyWebMenuItem _cyWebMenuItem;
 	protected HashMap<String, AlgorithmParameter> _parameters;
@@ -121,6 +125,44 @@ public class Algorithm {
 	public void setCitation(String citation) {
 		this._citation = citation;
 	}
+
+	@Schema(description="Email address for support or contact")
+	public String getEmail() {
+		return _email;
+	}
+
+	public void setEmail(String _email) {
+		this._email = _email;
+	}
+	
+	@Schema(description="Link to code repository")
+	public String getCodeRepository() {
+		return _codeRepository;
+	}
+
+	public void setCodeRepository(String _codeRepository) {
+		this._codeRepository = _codeRepository;
+	}
+
+	@Schema(description="Link to website")
+	public String getWebsite() {
+		return _website;
+	}
+
+	public void setWebsite(String _website) {
+		this._website = _website;
+	}
+
+	@Schema(description="Link to tutorial")
+	public String getTutorial() {
+		return _tutorial;
+	}
+
+	public void setTutorial(String _tutorial) {
+		this._tutorial = _tutorial;
+	}
+	
+	
 	
 	
 
