@@ -19,7 +19,7 @@ public class TestAlgorithm {
         assertEquals(null, cda.getDescription());
         assertEquals(null, cda.getName());
         assertEquals(null, cda.getVersion());
-		assertEquals(null, cda.getCyWebAction());
+		assertEquals(null, cda.getCyWebActions());
 		assertEquals(null, cda.getAuthor());
 		assertEquals(null, cda.getCitation());
 		assertEquals(null, cda.getServiceInputDefinition());
@@ -37,7 +37,7 @@ public class TestAlgorithm {
 		cda.setVersion("version");
 		cda.setCitation("citation");
 		cda.setAuthor("author");
-		cda.setCyWebAction(Algorithm.ADD_NETWORKS_ACTION);
+		cda.setCyWebActions(Arrays.asList(Algorithm.ADD_NETWORKS_ACTION));
 		
        
 		
