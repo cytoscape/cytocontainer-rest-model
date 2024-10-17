@@ -3,8 +3,10 @@ package org.cytoscape.cytocontainer.rest.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import org.cytoscape.cytocontainer.rest.model.exceptions.CytoContainerException;
@@ -28,7 +30,7 @@ public class Algorithm {
     private String _name;
     private String _description;
     private String _version;
-	private String _cyWebAction;
+	private List<String> _cyWebActions;
 	private String _author;
 	private String _citation;
 	private ServiceInputDefinition _serviceInputDefinition;
@@ -46,7 +48,11 @@ public class Algorithm {
 		_name = algorithm.getName();
 		_description = algorithm.getDescription();
 		_version = algorithm.getVersion();
-		_cyWebAction = algorithm.getCyWebAction();
+		if (algorithm.getCyWebActions() != null){
+			_cyWebActions = new ArrayList<>();
+			_cyWebActions.addAll(algorithm.getCyWebActions());
+			
+		}
 		_cyWebMenuItem = algorithm.getCyWebMenuItem();
 		_author = algorithm.getAuthor();
 		_citation = algorithm.getCitation();
@@ -118,23 +124,29 @@ public class Algorithm {
 	
 	
 
-	@Schema(description="Action to be performed with result by caller. Should be set to one of the following Enums listed: For more information see: "
-            + " https://github.com/cytoscape-web\n",
+	@Schema(description="List of action to be performed with result by caller. Elements of list can "
+			+ "be one of the allowable values",
 			allowableValues = {Algorithm.ADD_NETWORKS_ACTION,
 			                   Algorithm.ADD_TABLES_ACTION,
 			                   Algorithm.UPDATE_LAYOUTS_ACTION,
 			                   Algorithm.UPDATE_NETWORK_ACTION,
 			                   Algorithm.UPDATE_SELECTION_ACTION,
 			                   Algorithm.UPDATE_TABLES_ACTION})
-	public String getCyWebAction() {
-		return _cyWebAction;
+	public List<String> getCyWebActions() {
+		return _cyWebActions;
 	}
 
-	public void setCyWebAction(String cyWebAction) throws CytoContainerException {
-		if (cyWebAction != null && !ACTION_SET.contains(cyWebAction)){
-			throw new CytoContainerException(cyWebAction + " is not a valid action");
+	public void setCyWebActions(List<String> cyWebAction) throws CytoContainerException {
+		if (cyWebAction == null){
+			_cyWebActions = null;
+			return;
 		}
-		this._cyWebAction = cyWebAction;
+		for (String action : cyWebAction){
+			if (action != null && !ACTION_SET.contains(action)){
+				throw new CytoContainerException(action + " from " + cyWebAction + " is not a valid action");
+			}
+		}
+		this._cyWebActions = cyWebAction;
 	}
 
 	@Schema(description="Defines data this algorithm expects to receive")
