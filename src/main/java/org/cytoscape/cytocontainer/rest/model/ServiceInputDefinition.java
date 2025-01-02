@@ -16,10 +16,10 @@ import org.cytoscape.cytocontainer.rest.model.exceptions.CytoContainerException;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ServiceInputDefinition {
 	
-	public static final String NODES_TYPE = "nodes";
-	public static final String EDGES_TYPE = "edges";
+	public static final String NODE_TYPE = "node";
+	public static final String EDGE_TYPE = "edge";
 	public static final String NETWORK_TYPE = "network";
-	public static final Set<String> TYPE_SET = Set.of(NODES_TYPE, EDGES_TYPE, NETWORK_TYPE);
+	public static final Set<String> TYPE_SET = Set.of(NODE_TYPE, EDGE_TYPE, NETWORK_TYPE);
 
 	public static final String SELECTED_SCOPE = "selected";
 	public static final String ALL_SCOPE = "all";
@@ -74,7 +74,7 @@ public class ServiceInputDefinition {
 		this._scope = scope;
 	}
 
-	@Schema(description="List of columns that need to be created. For type of '" + ServiceInputDefinition.NODES_TYPE + "' and '" + ServiceInputDefinition.EDGES_TYPE + "' only.")
+	@Schema(description="List of columns that need to be created. For type of '" + ServiceInputDefinition.NODE_TYPE + "' and '" + ServiceInputDefinition.EDGE_TYPE + "' only.")
 	public List<InputColumn> getInputColumns() {
 		return _inputColumns;
 	}
