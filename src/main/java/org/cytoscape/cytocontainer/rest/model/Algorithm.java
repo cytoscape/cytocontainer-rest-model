@@ -25,8 +25,10 @@ public class Algorithm {
 	public static final String UPDATE_TABLES_ACTION = "updateTables";
 	public static final String UPDATE_LAYOUTS_ACTION = "updateLayouts";
 	public static final String UPDATE_SELECTION_ACTION = "updateSelection";
+	public static final String OPEN_URL_ACTION = "openURL";
 	public static final Set<String> ACTION_SET = Set.of(ADD_NETWORKS_ACTION, ADD_TABLES_ACTION,
-			UPDATE_NETWORK_ACTION, UPDATE_TABLES_ACTION, UPDATE_LAYOUTS_ACTION, UPDATE_SELECTION_ACTION);
+			UPDATE_NETWORK_ACTION, UPDATE_TABLES_ACTION, UPDATE_LAYOUTS_ACTION, UPDATE_SELECTION_ACTION,
+			OPEN_URL_ACTION);
     private String _name;
     private String _description;
     private String _version;
@@ -173,7 +175,8 @@ public class Algorithm {
 			                   Algorithm.UPDATE_LAYOUTS_ACTION,
 			                   Algorithm.UPDATE_NETWORK_ACTION,
 			                   Algorithm.UPDATE_SELECTION_ACTION,
-			                   Algorithm.UPDATE_TABLES_ACTION})
+			                   Algorithm.UPDATE_TABLES_ACTION,
+				               Algorithm.OPEN_URL_ACTION})
 	public List<String> getCyWebActions() {
 		return _cyWebActions;
 	}
