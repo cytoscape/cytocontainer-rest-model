@@ -21,7 +21,6 @@ public class AlgorithmParameter {
 	public static final String CHECKBOX_TYPE = "checkBox";
 	public static final String NODECOLUMN_TYPE = "nodeColumn";
 	public static final String EDGECOLUMN_TYPE = "edgeColumn";
-    public static final String FLAG_TYPE = "flag";
 	
 	public static final Set<String> TYPE_SET = Set.of(TEXT_TYPE, DROPDOWN_TYPE, RADIO_TYPE, CHECKBOX_TYPE,
 			NODECOLUMN_TYPE, EDGECOLUMN_TYPE);
@@ -83,8 +82,7 @@ public class AlgorithmParameter {
 			                 AlgorithmParameter.RADIO_TYPE,
 			                 AlgorithmParameter.CHECKBOX_TYPE,
 			                 AlgorithmParameter.NODECOLUMN_TYPE,
-			                 AlgorithmParameter.EDGECOLUMN_TYPE,
-			                 AlgorithmParameter.FLAG_TYPE})
+			                 AlgorithmParameter.EDGECOLUMN_TYPE})
     public String getType() {
         return type;
     }
