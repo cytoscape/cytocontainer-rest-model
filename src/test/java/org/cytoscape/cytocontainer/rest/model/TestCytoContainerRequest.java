@@ -13,12 +13,10 @@ public class TestCytoContainerRequest {
     @Test
     public void testGettersAndSetters(){
         CytoContainerRequest eq = new CytoContainerRequest();
-        eq.setAlgorithm("algo");
         eq.setData(new TextNode("hi"));
         HashMap<String, String> cParams = new HashMap<>();
         cParams.put("hi", "bye");
         eq.setParameters(cParams);
-        assertEquals("algo", eq.getAlgorithm());
         assertEquals("hi", eq.getData().asText());
         assertEquals("bye", eq.getParameters().get("hi"));
     }

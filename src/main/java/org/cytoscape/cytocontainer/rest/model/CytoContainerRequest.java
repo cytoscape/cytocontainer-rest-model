@@ -12,26 +12,8 @@ import java.util.Map;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CytoContainerRequest {
     
-    private String algorithm;
     private JsonNode data;
     private Map<String, String> _parameters;
-
-    /**
-     * Gets the name of the algorithm to use with this request
-     * @return 
-     */
-    @Schema(description="Name of algorithm to run", example="updatetablesexample")
-    public String getAlgorithm() {
-        return algorithm;
-    }
-
-    /**
-     * Sets the name of the algorithm to use with this request
-     * @param _algorithm 
-     */
-    public void setAlgorithm(String algorithm) {
-        this.algorithm = algorithm;
-    }
 
     /**
      * Gets data as string which should be in format of
