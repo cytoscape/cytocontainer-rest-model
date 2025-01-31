@@ -2,8 +2,7 @@ package org.cytoscape.cytocontainer.rest.model;
 
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 /**
@@ -28,7 +27,7 @@ public class TestAlgorithm {
 		
 
         assertEquals(null, cda.getVersion());
-        HashSet<AlgorithmParameter> cParams = new HashSet<>();
+        LinkedHashSet<AlgorithmParameter> cParams = new LinkedHashSet<>();
         AlgorithmParameter cp = new AlgorithmParameter();
         cParams.add(cp);
         cda.setParameters(cParams);

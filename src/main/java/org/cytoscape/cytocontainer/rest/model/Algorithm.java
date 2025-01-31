@@ -4,10 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import org.cytoscape.cytocontainer.rest.model.exceptions.CytoContainerException;
 
@@ -41,7 +40,7 @@ public class Algorithm {
 	private String _tutorial;
 	private ServiceInputDefinition _serviceInputDefinition;
 	private CyWebMenuItem _cyWebMenuItem;
-	protected HashMap<String, AlgorithmParameter> _parameters;
+	protected LinkedHashMap<String, AlgorithmParameter> _parameters;
 
 	public Algorithm(){
 		
@@ -205,20 +204,20 @@ public class Algorithm {
 
 	
 	@Schema(description="Any custom parameters this algorithm accepts")
-    public Set<AlgorithmParameter> getParameters() {
+    public LinkedHashSet<AlgorithmParameter> getParameters() {
         if (_parameters == null){
             return null;
         }
-        return new HashSet(_parameters.values());
+        return new LinkedHashSet(_parameters.values());
     }
 
-    public void setParameters(Set<AlgorithmParameter> parameters) {
+    public void setParameters(LinkedHashSet<AlgorithmParameter> parameters) {
         if (parameters == null){
             this._parameters = null;
             return;
         }
         if (this._parameters == null){
-            this._parameters = new HashMap<>();
+            this._parameters = new LinkedHashMap<>();
         }else {
             this._parameters.clear();
         }
@@ -240,13 +239,13 @@ public class Algorithm {
 		}
 
 		if (_parameters == null){
-			_parameters = new HashMap<>();
+			_parameters = new LinkedHashMap<>();
 		}
 		_parameters.put(param.getDisplayName(), param);
 	}
     
     @JsonIgnore
-    public Map<String, AlgorithmParameter> getParameterMap(){
+    public LinkedHashMap<String, AlgorithmParameter> getParameterMap(){
         return this._parameters;
     }
     
