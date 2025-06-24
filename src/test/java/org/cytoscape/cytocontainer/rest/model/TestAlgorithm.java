@@ -23,6 +23,12 @@ public class TestAlgorithm {
 		assertEquals(null, cda.getCitation());
 		assertEquals(null, cda.getServiceInputDefinition());
 		assertEquals(null, cda.getCyWebMenuItem());
+		assertEquals(false, cda.getShowDescriptionInDialog());
+		assertEquals(null, cda.getEmail());
+		assertEquals(null, cda.getCodeRepository());
+		assertEquals(null, cda.getWebsite());
+		assertEquals(null, cda.getTutorial());
+		assertEquals(null, cda.getParameters());
 		
 		
 
@@ -37,12 +43,22 @@ public class TestAlgorithm {
 		cda.setCitation("citation");
 		cda.setAuthor("author");
 		cda.setCyWebActions(Arrays.asList(Algorithm.ADD_NETWORKS_ACTION));
+		cda.setShowDescriptionInDialog(true);
+		cda.setEmail("email");
+		cda.setCodeRepository("https://coderepo");
+		cda.setWebsite("https://website");
+		cda.setTutorial("https://tutorial");
 		
        
 		
         cda.setVersion("version");
         assertEquals("desc", cda.getDescription());
         assertEquals("name", cda.getName());
+		assertEquals(true, cda.getShowDescriptionInDialog());
+		assertEquals("email", cda.getEmail());
+		assertEquals("https://coderepo", cda.getCodeRepository());
+		assertEquals("https://website", cda.getWebsite());
+		assertEquals("https://tutorial", cda.getTutorial());
 
         assertEquals("version", cda.getVersion());
 	}	

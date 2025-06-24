@@ -30,6 +30,7 @@ public class Algorithm {
 			OPEN_URL_ACTION);
     private String _name;
     private String _description;
+	private boolean _showDescriptionInDialog;
     private String _version;
 	private List<String> _cyWebActions;
 	private String _author;
@@ -52,6 +53,7 @@ public class Algorithm {
 		}
 		_name = algorithm.getName();
 		_description = algorithm.getDescription();
+		_showDescriptionInDialog = algorithm.getShowDescriptionInDialog();
 		_version = algorithm.getVersion();
 		if (algorithm.getCyWebActions() != null){
 			_cyWebActions = new ArrayList<>();
@@ -100,6 +102,15 @@ public class Algorithm {
         this._description = description;
     }
 
+	@Schema(description="If true, show description in dialog displayed to user")
+	public boolean getShowDescriptionInDialog() {
+		return _showDescriptionInDialog;
+	}
+
+	public void setShowDescriptionInDialog(boolean _showDescriptionInDialog) {
+		this._showDescriptionInDialog = _showDescriptionInDialog;
+	}
+	
     @Schema(description="Version of algorithm")
     public String getVersion() {
         return _version;
