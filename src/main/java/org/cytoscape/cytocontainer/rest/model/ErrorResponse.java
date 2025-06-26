@@ -26,6 +26,11 @@ public class ErrorResponse {
         timeStamp = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH:mm.s",
                                                  Locale.ENGLISH).format(ldt);
     }
+	
+	public ErrorResponse(final String message){
+		this();
+		this.message = message;
+	}
     
     public ErrorResponse(final String message, Exception ex){
         this();
