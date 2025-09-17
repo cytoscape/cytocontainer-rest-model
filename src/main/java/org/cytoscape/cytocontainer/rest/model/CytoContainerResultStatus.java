@@ -81,7 +81,7 @@ public class CytoContainerResultStatus extends RequestStatus {
         this.status = status;
     }
 
-    @Schema(description="null or a message denoting a possible issue")
+    @Schema(description="null or a message denoting progress or possible issue")
     public String getMessage() {
         return message;
     }
